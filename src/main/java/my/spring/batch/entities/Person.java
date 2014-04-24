@@ -2,34 +2,49 @@ package my.spring.batch.entities;
 
 
 public class Person {
-    private String lastName;
-    private String firstName;
+  /**
+   * last name
+   */
+  private String lastName;
+  /**
+   * first name
+   */
+  private String firstName;
 
-    public Person() {}
+  /**
+   * Default constructor
+   */
+  public Person() {}
 
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+  /**
+   * Constructor with first name , last name
+   * 
+   * @param firstName
+   * @param lastName
+   */
+  public Person(final String firstName, final String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    @Override
-    public String toString() {
-        return "firstName: " + firstName + ", lastName: " + lastName;
-    }
+  @Override
+  public String toString() {
+    return "firstName: " + firstName + ", lastName: " + lastName;
+  }
 }

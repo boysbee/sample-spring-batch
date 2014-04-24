@@ -55,7 +55,7 @@ public class BatchConfig {
   }
 
   @Bean
-  public ItemWriter<Person> writer(DataSource dataSource) {
+  public ItemWriter<Person> writer(final DataSource dataSource) {
     JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<Person>();
     writer
         .setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
@@ -68,11 +68,14 @@ public class BatchConfig {
 
   // tag::jobstep[]
   @Bean
-  public Job importUserJob(JobBuilderFactory jobs, Step s1) {
+  public Job importUserJob(final JobBuilderFactory jobs, final Step s1) {
     return jobs.get("importUserJob").incrementer(new RunIdIncrementer()).flow(s1).end().build();
   }
 
-  private final static int BASE_CHUNK = 10;
+  /**
+   * Base value for chunk in step builder
+   */
+  private final int BASE_CHUNK = 10;
 
   @Bean
   public Step step1(final StepBuilderFactory stepBuilderFactory, final ItemReader<Person> reader,
@@ -84,7 +87,7 @@ public class BatchConfig {
   // end::jobstep[]
 
   @Bean
-  public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+  public JdbcTemplate jdbcTemplate(final DataSource dataSource) {
     return new JdbcTemplate(dataSource);
   }
 }
